@@ -1,23 +1,23 @@
 import openpyxl
 from openpyxl.styles import Protection
+#Les deux premières lignes nous permettent d'importer les librairies pour la bonne exécution du script. C'est à ne surtout pas oublier.......
+# Je load en premier temps le fichier Excel que je souhaite modifier
+fichier_excel = openpyxl.load_workbook('testme.xlsx')
 
-# Charger le fichier Excel
-fichier_excel = openpyxl.load_workbook('votre_tableau.xlsx')
-
-# Sélectionner la feuille de calcul (assurez-vous de remplacer 'Feuille1' par le nom réel de votre feuille)
+# Je sélectionne la feuille de calcul sur laquelle je veux effectuer les modifications
 feuille = fichier_excel['Feuille1']
 
-# Sélectionner la cellule somme (assurez-vous de remplacer 'A1' par l'emplacement réel de votre cellule somme)
+# Je sélectionne la cellule somme 
 cellule_somme = feuille['A1']
 
-# Verrouiller la cellule
+# Je verrouille la cellule
 cellule_somme.protection = Protection(locked=True)
 
-# Protéger la feuille de calcul (vous pouvez définir un mot de passe si nécessaire)
+# Protégeons la feuille de calcul
 feuille.protection.sheet = True
 
-# Sauvegarder les modifications dans le fichier Excel
-fichier_excel.save('tableau_protege.xlsx')
+# Je sauvegarder les modifications dans le fichier Excel
+fichier_excel.save('testme_protege.xlsx')
 
-# Fermer le fichier Excel
+# Fermons le fichier Excel
 fichier_excel.close()
